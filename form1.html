@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <h2>Form 1</h2>
+
+    <form id="userForm" method='post' action="/action_page.php">
+        <label for="fname">First name:</label><br>
+        <input type="text" id="fname" name="fname" placeholder='type'><br>
+        <label for="lname">Password:</label><br>
+        <input type="Password" required><br>
+        <input type="date"> <br>
+        <input type="radio">radio<br>
+        <input type="checkbox">check1<br>
+
+        <fieldset>
+            <legend>배송 정보</legend>
+            <input type="text" name="address">
+        </fieldset>
+
+        <select>
+            <optgroup label="과일">
+                <option>사과</option>
+                <option>바나나</option>
+            </optgroup>
+            <optgroup label="채소">
+                <option>당근</option>
+            </optgroup>
+        </select>
+
+        <input type="color" name="favcolor">
+
+        <input type="text" list="cities">
+        <datalist id="cities">
+            <option value="서울">
+            <option value="부산">
+        </datalist> <br>
+
+        <textarea cols="30" rows="10"> </textarea> <br>
+        <input type="submit" value="Submit">
+    </form>
+
+</body>
+
+</html>
