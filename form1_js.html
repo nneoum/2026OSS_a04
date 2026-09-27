@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>form1_css</title>
+    <title>form1_js</title>
     <!-- Clone Coding 원본 URL: https://www.kurly.com/member/signup?internalUrl=%2Fmain -->
     <style>
         * {
@@ -102,6 +102,12 @@
         textarea:focus {
             outline: none;
             border-color: #5f0080;
+        }
+
+        input:invalid:focus,
+        select:invalid:focus,
+        textarea:invalid:focus {
+            border-color: #d0021b;
         }
 
         input::placeholder,
@@ -317,6 +323,37 @@
 
         <input type="submit" value="가입하기">
     </form>
+
+    <script>
+        const form = document.querySelector("#userForm");
+
+        const emailId = document.querySelector("#emailId");
+        const emailDomain = document.querySelector("#emailDomain");
+
+        emailDomain.addEventListener("change", function () {
+            if (emailDomain.value === "direct") {
+                return;
+            }
+            const localPart = emailId.value.split("@")[0];
+            emailId.value = localPart + "@" + emailDomain.value;
+        });
+
+        form.addEventListener("submit", function (event) {
+            const requiredFields = form.querySelectorAll("[required]");
+
+            for (const field of requiredFields) {
+                if (!field.checkValidity()) {
+                    event.preventDefault();
+                    alert("입력값을 다시 확인해주세요.");
+                    field.focus();
+                    return;
+                }
+            }
+
+            event.preventDefault();
+            alert("등록이 완료되었습니다.");
+        });
+    </script>
 
 </body>
 
