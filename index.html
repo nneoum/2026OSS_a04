@@ -3,16 +3,287 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Assignment 2-2. HTML Form & JS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>박동민 자기소개</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        :root {
+            --ink: #0a0a0a;
+            --gray: #6b6b6b;
+            --line: #e4e4e4;
+            --bg: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: "Inter", "Noto Sans KR", "Pretendard", "Apple SD Gothic Neo", sans-serif;
+            background-color: var(--bg);
+            background-image: radial-gradient(circle at 1px 1px, #d9d9d9 1px, transparent 0);
+            background-size: 24px 24px;
+            color: var(--ink);
+            border-top: 5px solid var(--ink);
+        }
+
+        .wrap {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 24px 90px;
+        }
+
+        nav.topnav {
+            position: sticky;
+            top: 20px;
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            padding: 24px 0 70px;
+        }
+
+        nav.topnav .pill {
+            display: flex;
+            gap: 4px;
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            padding: 6px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        }
+
+        nav.topnav a {
+            padding: 8px 18px;
+            border-radius: 999px;
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--gray);
+            text-decoration: none;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        nav.topnav a:hover {
+            background: #f2f2f2;
+            color: var(--ink);
+        }
+
+        nav.topnav a.current {
+            background: var(--ink);
+            color: #fff;
+        }
+
+        .brand {
+            font-weight: 800;
+            font-size: 13px;
+            letter-spacing: 0.22em;
+            margin-bottom: 40px;
+        }
+
+        .kicker {
+            font-size: 15px;
+            color: var(--gray);
+            margin: 0 0 6px;
+        }
+
+        h1 {
+            font-weight: 900;
+            font-size: clamp(48px, 9vw, 84px);
+            line-height: 0.98;
+            letter-spacing: -0.03em;
+            margin: 6px 0 0;
+        }
+
+        h1 .line2 {
+            display: block;
+            margin-left: clamp(20px, 8vw, 90px);
+            color: var(--ink);
+        }
+
+        .meta {
+            margin-top: 28px;
+            color: var(--gray);
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .meta b {
+            color: var(--ink);
+            font-weight: 700;
+        }
+
+        section {
+            margin-top: 90px;
+        }
+
+        h2 {
+            font-weight: 900;
+            font-size: 34px;
+            letter-spacing: -0.02em;
+            margin: 0 0 6px;
+        }
+
+        .section-sub {
+            color: var(--gray);
+            font-size: 14.5px;
+            margin: 0 0 28px;
+        }
+
+        .tags {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tags li {
+            font-family: "SFMono-Regular", ui-monospace, "JetBrains Mono", Menlo, monospace;
+            font-size: 12.5px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            color: var(--gray);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: 7px 12px;
+        }
+
+        .card {
+            position: relative;
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 30px 32px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+        }
+
+        .card h3 {
+            font-size: 21px;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            margin: 0 0 12px;
+            padding-right: 40px;
+        }
+
+        .card .arrow {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            color: var(--gray);
+            font-size: 18px;
+        }
+
+        .card p {
+            color: var(--gray);
+            font-size: 15px;
+            line-height: 1.75;
+            margin: 0 0 20px;
+        }
+
+        .link-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .link-list a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 16px 20px;
+            color: var(--ink);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15px;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .link-list a:hover {
+            background: #f5f5f5;
+            transform: translateX(4px);
+        }
+
+        .link-list a .arrow {
+            color: var(--gray);
+            font-size: 16px;
+        }
+
+        footer {
+            margin-top: 100px;
+            padding-top: 24px;
+            border-top: 1px solid var(--line);
+            color: var(--gray);
+            font-size: 13px;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>HTML Form & JS</h1>
-    <ul>
-        <li><a href="form1.html">form1.html (HTML 구조)</a></li>
-        <li><a href="form1_css.html">form1_css.html (CSS 적용)</a></li>
-        <li><a href="form1_js.html">form1_js.html (Validation + JS)</a></li>
-    </ul>
+    <div class="wrap">
+        <nav class="topnav">
+            <div class="pill">
+                <a class="current" href="index.html">Home</a>
+                <a href="style1.html">Style 1</a>
+                <a href="style2.html">Style 2</a>
+                <a href="nostyle.html">No Style</a>
+            </div>
+        </nav>
+
+        <div class="brand">DONGMIN PARK</div>
+
+        <p class="kicker">전산심화 전공생 · 학번 22300272</p>
+        <h1>운동하고<span class="line2">코드 짜기.</span></h1>
+
+        <div class="meta">
+            <p><b>학번</b> 22300272 &nbsp;·&nbsp; <b>전공</b> 전산심화</p>
+        </div>
+
+        <section>
+            <h2>관심 분야</h2>
+            <p class="section-sub">평소에 즐겨 하는 것들.</p>
+            <ul class="tags">
+                <li>[ 헬스 ]</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Project</h2>
+            <p class="section-sub">만들어보고 싶은 서비스.</p>
+            <div class="card">
+                <span class="arrow">→</span>
+                <h3>AI 기반 맞춤형 헬스 루틴 추천 서비스</h3>
+                <p>
+                    전산심화 전공 지식과 헬스에 대한 관심을 결합해, 사용자의 운동 기록과 신체 데이터를
+                    분석하여 개인 맞춤형 루틴을 추천해주는 웹/앱 서비스를 만들어보고 싶다.
+                </p>
+                <ul class="tags">
+                    <li>[ AI ]</li>
+                    <li>[ FITNESS ]</li>
+                    <li>[ IN PROGRESS ]</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>페이지 이동</h2>
+            <p class="section-sub">HTML Form &amp; JS 과제 페이지.</p>
+            <ul class="link-list">
+                <li><a href="form1.html">form1.html (HTML 구조) <span class="arrow">→</span></a></li>
+                <li><a href="form1_css.html">form1_css.html (CSS 적용) <span class="arrow">→</span></a></li>
+                <li><a href="form1_js.html">form1_js.html (Validation + JS) <span class="arrow">→</span></a></li>
+            </ul>
+        </section>
+
+        <footer>© 2026 Dongmin Park.</footer>
+    </div>
 </body>
 
 </html>
