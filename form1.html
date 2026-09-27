@@ -1,44 +1,116 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Form 1</title>
+</head>
 
 <body>
 
-    <h2>Form 1</h2>
+    <h2>회원가입</h2>
 
-    <form id="userForm" method='post' action="/action_page.php">
-        <label for="fname">First name:</label><br>
-        <input type="text" id="fname" name="fname" placeholder='type'><br>
-        <label for="lname">Password:</label><br>
-        <input type="Password" id = "password" required><br>
-        <input type="date"> <br>
-        <input type="radio">radio<br>
-        <input type="checkbox">check1<br>
+    <form id="userForm" method="post" action="/action_page.php">
 
         <fieldset>
-            <legend>배송 정보</legend>
-            <input type="text" name="address">
+            <legend>필수입력사항</legend>
+
+            <label for="userid">아이디*</label><br>
+            <input type="text" id="userid" name="userid" placeholder="아이디를 입력해주세요" required><br>
+
+            <label for="password">비밀번호*</label><br>
+            <input type="password" id="password" name="password" required><br>
+
+            <label for="passwordConfirm">비밀번호확인*</label><br>
+            <input type="password" id="passwordConfirm" name="passwordConfirm" required><br>
+
+            <label for="username">이름*</label><br>
+            <input type="text" id="username" name="username" placeholder="이름을 입력해 주세요" required><br>
+
+            <label for="emailId">이메일*</label><br>
+            <input type="text" id="emailId" name="emailId" placeholder="예: marketkurly"> @
+            <select id="emailDomain" name="emailDomain">
+                <optgroup label="자주 쓰는 도메인">
+                    <option value="naver.com">naver.com</option>
+                    <option value="gmail.com">gmail.com</option>
+                    <option value="daum.net">daum.net</option>
+                </optgroup>
+                <optgroup label="기타">
+                    <option value="direct">직접 입력</option>
+                </optgroup>
+            </select><br>
+
+            <label for="phone">휴대폰*</label><br>
+            <input type="tel" id="phone" name="phone" placeholder="숫자만 입력해주세요.">
+            <button type="button">인증번호 받기</button><br>
+
+            <label for="address">주소*</label><br>
+            <input type="text" id="address" name="address" list="cities" placeholder="주소를 입력해주세요">
+            <datalist id="cities">
+                <option value="서울">
+                <option value="부산">
+                <option value="포항">
+            </datalist>
+            <button type="button">주소 검색</button><br>
+
+            <label for="birthdate">생년월일*</label><br>
+            <input type="date" id="birthdate" name="birthdate" required><br>
         </fieldset>
 
-        <select>
-            <optgroup label="과일">
-                <option>사과</option>
-                <option>바나나</option>
-            </optgroup>
-            <optgroup label="채소">
-                <option>당근</option>
-            </optgroup>
-        </select>
+        <fieldset>
+            <legend>성별</legend>
+            <input type="radio" id="genderMale" name="gender" value="MALE">
+            <label for="genderMale">남자</label>
 
-        <input type="color" name="favcolor">
+            <input type="radio" id="genderFemale" name="gender" value="FEMALE">
+            <label for="genderFemale">여자</label>
 
-        <input type="text" list="cities">
-        <datalist id="cities">
-            <option value="서울">
-            <option value="부산">
-        </datalist> <br>
+            <input type="radio" id="genderNone" name="gender" value="NONE" checked>
+            <label for="genderNone">선택안함</label>
+        </fieldset>
 
-        <textarea cols="30" rows="10"> </textarea> <br>
-        <input type="submit" value="Submit">
+        <fieldset>
+            <legend>추가입력 사항</legend>
+            <label for="referrer">친구초대 추천인 아이디</label><br>
+            <input type="text" id="referrer" name="referrer"><br>
+
+            <label for="request">추가 요청사항</label><br>
+            <textarea id="request" name="request" cols="30" rows="5"></textarea>
+        </fieldset>
+
+        <fieldset>
+            <legend>이용약관동의*</legend>
+
+            <input type="checkbox" id="agreeAll" name="agreeAll">
+            <label for="agreeAll">전체 동의합니다</label><br>
+
+            <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
+            <label for="agreeTerms">컬리 이용약관 동의 (필수)</label><br>
+
+            <input type="checkbox" id="agreePrivacy" name="agreePrivacy" required>
+            <label for="agreePrivacy">개인정보 수집·이용 (필수)</label><br>
+
+            <input type="checkbox" id="agreeEvent" name="agreeEvent">
+            <label for="agreeEvent">이벤트 및 혜택정보 발송을 위한 수집·이용 (선택)</label><br>
+
+            <input type="checkbox" id="agreeAd" name="agreeAd">
+            <label for="agreeAd">광고성 정보 수신 (선택)</label><br>
+
+            <input type="checkbox" id="agreeAdSms" name="agreeAdSms">
+            <label for="agreeAdSms">문자</label>
+
+            <input type="checkbox" id="agreeAdEmail" name="agreeAdEmail">
+            <label for="agreeAdEmail">이메일</label>
+
+            <input type="checkbox" id="agreeAdKakao" name="agreeAdKakao">
+            <label for="agreeAdKakao">카카오</label><br>
+
+            <input type="checkbox" id="agreeAge" name="agreeAge" required>
+            <label for="agreeAge">본인은 만 14세 이상입니다. (필수)</label>
+        </fieldset>
+
+        <br>
+        <input type="submit" value="가입하기">
     </form>
 
 </body>
